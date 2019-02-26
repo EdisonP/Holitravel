@@ -1,117 +1,210 @@
-<!DOCTYPE HTML>
+<!DOCTYPE PHP>
 <html>
-	<head>
-		<title>Travellizer</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" href="css/main.css" />
-	</head>
-	<body id="top">
+<head>
+	<title>Travellizer</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
 
-			<!-- Banner -->
-			<!-- data-video is the video name without extension-->
-				<section id="banner">
-						<video width="400" autoplay muted>
-							<source src="assets/smug.mp4">
-						</video>
-				</section>
+	<!-- Header -->
+	<header id="header">
+		<a href="index.php" class="logo"><strong>Travellizer</strong></a>
+		<nav>
+			<a href="#menu">Menu</a>
+		</nav>
+	</header>
 
-            <!-- Login Modal -->
-                <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+	<!-- Nav -->
+	<?php
+	session_start();
+	if (isset($_SESSION['SESS_USER'])) {
+		?>
+		<nav id="menu">
+			<ul class="links">
+				<li><a href="/">Home</a></li>
+				<li><a href="php/logoutF.php">Logout</a></li>
+				<li><a href="/bookH">Book Holiday</a></li>
+				<li><a href="/viewUserH">View your Holiday</a></li>
+				<li><a href="/profile">View Profile</a></li>
+			</ul>
+		</nav>
+		<?php
 
-                <div id="id01" class="modal">
-                
-                    <form class="modal-content animate" action="php/login.php" method="POST"> <!-- make login.php -->
-                    <div class="imgcontainer">
-                        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal" >&times;</span>
-                    </div>    
-                    <div class="container">
-                        <label for="uname"><h2><b>Username</b></h2></label>
-                        <input type="text" placeholder="Enter Username" name="uname" required>
+} else if (isset($_SESSION['SESS_ADMIN'])) {
+	?>
+	<nav id="menu">
+		<ul class="links">
+			<li><a href="/">Home</a></li>
+			<li><a href="php/logoutF.php">Logout</a></li>
+			<li><a href="/viewH">View/Edit Holidays</a></li>
+			<li><a href="/viewUser">View/Edit Users</a></li>
+		</ul>
+	</nav>
+		<?php
+	} else {
+		?>
+		<nav id="menu">
+			<ul class="links">
+				<li><a href="/">Home</a></li>
+				<li><a href="/login">Login</a></li>
+				<li><a href="/register">Register</a></li>
+			</ul>
+		</nav>
+		<?php
+	}
+	?>
+	<!-- Banner -->
+	<section id="banner">
+			<video src="assets/holidayVid.mp4" alt="" data-position="center" autoplay muted>
+	</section>
+	<section id="banner">
+	<img src="assets/pic03.jpg">
+		<h1>Travel at your pace</h1>
+			<ul class="actions">
+				<li><a href="#one" class="button alt scrolly big">Continue</a></li>
+			</ul>
+	</section>
 
-                        <label for="psw"><h2><b>Password</b></h2></label>
-                        <input type="password" placeholder="Enter Password" name="psw" required>
-                            <br>
-                        <button type="submit">Login</button>
-                        <button type="button" onclick="document.getElementById('id01').style.display='none'" style="background-color:red; float: right;">Cancel</button>
-                        </div>
-                    </form>
-                </div>
+	<!-- One -->
+	<article id="one" class="post style1">
+		<div class="image">
+			<img src="images/juPics/pic01.jpg" alt="" data-position="75% center" />
+		</div>
+		<div class="content">
+			<div class="inner">
+				<header>
+					<h2><a href="information.html">Information</a></h2>
+				</header>
+				<p>Information about the Jinjang Utara Community</p>
+				<ul class="actions">
+					<li><a href="information.html" class="button alt">Read More</a></li>
+				</ul>
+			</div>
+			<div class="postnav">
+				<a href="#two" class="scrolly next"><span class="icon fa-chevron-down"></span></a>
+			</div>
+		</div>
+	</article>
 
-            <!-- Main -->
-				<div id="main">
-					<div class="inner">
+	<!-- Two -->
+	<article id="two" class="post invert style1 alt">
+		<div class="image">
+			<img src="images/juPics/pic02.jpg" alt="" data-position="80% center" />
+		</div>
+		<div class="content">
+			<div class="inner">
+				<header>
+					<h2><a href="events.html">News/Past Events</a></h2>
+				</header>
+				<p>Photo gallery, newspaper write ups on the events</p>
+				<ul class="actions">
+					<li><a href="events.html" class="button alt">Read More</a></li>
+				</ul>
+			</div>
+			<div class="postnav">
+				<a href="#one" class="scrolly prev"><span class="icon fa-chevron-up"></span></a>
+				<a href="#three" class="scrolly next"><span class="icon fa-chevron-down"></span></a>
+			</div>
+		</div>
+	</article>
 
-					<!-- Boxes -->
-						<div class="thumbnails">
+	<!-- Three -->
+	<article id="three" class="post style2">
+		<div class="image">
+			<img src="images/juPics/pic03.jpg" alt="" data-position="80% center" />
+		</div>
+		<div class="content">
+			<div class="inner">
+				<header>
+					<h2><a href="help.html">How you can help</a></h2>
+				</header>
+				<p>Volunteers, Learning materials, Children school supplies sponsor a child, E-business</p>
+				<ul class="actions">
+					<li><a href="help.html" class="button alt">Read More</a></li>
+				</ul>
+			</div>
+			<div class="postnav">
+				<a href="#two" class="scrolly prev"><span class="icon fa-chevron-up"></span></a>
+				<a href="#four" class="scrolly next"><span class="icon fa-chevron-down"></span></a>
+			</div>
+		</div>
+	</article>
 
-							<div class="fatbox">
-								<a href="https://youtu.be/s6zR2T9vn2c" class="image fit"><img src="assets/pic01.jpg" alt="" /></a>
-								<div class="inner">
-									<h3>Badabing</h3>
-									<p>Badaboom</p>
-									<a href="https://youtu.be/s6zR2T9vn2c" class="button fit" data-poptrox="youtube,800x400">Watch</a>
-								</div>
-							</div>
+	<!-- Four -->
+	<article id="four" class="post invert style2 alt">
+		<div class="image">
+			<img src="images/juPics/pic04.jpg" alt="" data-position="60% center" />
+		</div>
+		<div class="content">
+			<div class="inner">
+				<header>
+					<h2><a href="donations.html">Donations</a></h2>
+				</header>
+				<p>Donate now and make a pledge</p>
+				<ul class="actions">
+					<li><a href="donations.html" class="button alt">Read More</a></li>
+				</ul>
+			</div>
+			<div class="postnav">
+				<a href="#three" class="scrolly prev"><span class="icon fa-chevron-up"></span></a>
+				<a href="#five" class="scrolly next"><span class="icon fa-chevron-down"></span></a>
+			</div>
+		</div>
+	</article>
 
-							<div class="box">
-								<a href="https://youtu.be/s6zR2T9vn2c" class="image fit"><img src="assets/pic02.jpg" alt="" /></a>
-								<div class="inner">
-									<h3>Badabing</h3>
-									<p>Badaboom</p>
-									<a href="https://youtu.be/s6zR2T9vn2c" class="button style2 fit" data-poptrox="youtube,800x400">Watch</a>
-								</div>
-							</div>
+	<!-- Five -->
+	<article id="five" class="post style3">
+		<div class="image">
+			<img src="images/pic13.jpg" alt="" data-position="10% center" />
+		</div>
+		<div class="content">
+			<div class="inner">
+				<header>
+					<h2><a href="contact.html">About us</a></h2>
+				</header>
+				<p>About AGN, Our work and programme</p>
+				<ul class="actions">
+					<li><a href="contact.html" class="button alt">Read More</a></li>
+				</ul>
+			</div>
 
-							<div class="box">
-								<a href="https://youtu.be/s6zR2T9vn2c" class="image fit"><img src="assets/pic03.jpg" alt="" /></a>
-								<div class="inner">
-									<h3>Badabing</h3>
-									<p>Badaboom</p>
-									<a href="https://youtu.be/s6zR2T9vn2c" class="button style3 fit" data-poptrox="youtube,800x400">Watch</a>
-								</div>
-							</div>
+			<div class="postnav">
+				<a href="#four" class="scrolly prev"><span class="icon fa-chevron-up"></span></a>
+				<a href="#six" class="scrolly next"><span class="icon fa-chevron-down"></span></a>
+			</div>
+		</div>
+	</article>
 
-							<div class="box">
-								<a href="https://youtu.be/s6zR2T9vn2c" class="image fit"><img src="assets/pic04.jpg" alt="" /></a>
-								<div class="inner">
-									<h3>Badabing</h3>
-									<p>Badaboom</p>
-									<a href="https://youtu.be/s6zR2T9vn2c" class="button style2 fit" data-poptrox="youtube,800x400">Watch</a>
-								</div>
-							</div>
-						</div>
+	<!-- Six -->
+	<article id="six" class="post invert style3 alt">
+		<div class="image">
+			<img src="images/pic14.jpg" alt="" data-position="10% center" />
+		</div>
+		<div class="content">
+			<div class="inner">
+				<header>
+					<h2><a href="contact.html">Jobs</a></h2>
+				</header>
+				<p>Job offers in the community that you can help with</p>
+				<ul class="actions">
+					<li><a href="jobs.html" class="button alt">Read More</a></li>
+				</ul>
+			</div>
 
-					</div>
-                </div>
+			<div class="postnav">
+				<a href="#five" class="scrolly prev"><span class="icon fa-chevron-up"></span></a>
+			</div>
+		</div>
+	</article>
 
-			<!-- Footer -->
-				<footer id="footer">
-					<div class="inner">
-						<h2>Wing</h2>
-						<p>Wang</p>
-					</div>
-				</footer>
+<!-- Scripts -->
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.scrolly.min.js"></script>
+<script src="js/skel.min.js"></script>
+<script src="js/util.js"></script>
+<script src="js/main.js"></script>
 
-		<!-- Scripts -->
-			<script src="js/jquery.min.js"></script>
-			<script src="js/jquery.scrolly.min.js"></script>
-			<script src="js/jquery.poptrox.min.js"></script>
-			<script src="js/skel.min.js"></script>
-			<script src="js/util.js"></script>
-            <script src="js/main.js"></script>
-            
-            <script>
-        // Get the modal
-var modal = document.getElementById('id01');
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-</script>
-
-	</body>
+</body>
 </html>

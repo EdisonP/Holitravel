@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('/addH', function () {
-    return view('addHoliday');
+    return view('addH');
 });
 
 Route::get('/bookH', function () {
@@ -38,4 +38,8 @@ Route::get('/viewH', function () {
 Route::get('/viewUser', function () {
     return view('viewUser');
 });
+Route::get('/login', function () {
+    return view('login');
+});
+
 
