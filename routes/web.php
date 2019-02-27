@@ -38,8 +38,7 @@ Route::get('/viewH', function () {
 Route::get('/viewUser', function () {
     return view('viewUser');
 });
+
 Route::get('/login', function () {
     return view('login');
 });
-
-

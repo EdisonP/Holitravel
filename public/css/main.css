@@ -3295,12 +3295,28 @@
 
 	/* Banner */
 
-	#banner {
+	#banner,
+	#bannerV {
 		background-color: #0b0124;
 		color: rgba(255, 255, 255, 0.75);
 		text-align: center;
 		cursor: default;
 		padding: 3em 4em 9em 4em;
+	}
+
+	#banner video {
+		-moz-transform: translateX(50%) translateY(50%);
+		-webkit-transform: translateX(50%) translateY(50%);
+		-ms-transform: translateX(50%) translateY(50%);
+		transform: translateX(50%) translateY(50%);
+		position: absolute;
+		bottom: 50%;
+		right: 50%;
+		width: auto;
+		height: auto;
+		min-width: 100%;
+		min-height: 100%;
+		overflow: hidden;
 	}
 
 	#banner input, #banner select, #banner textarea {
