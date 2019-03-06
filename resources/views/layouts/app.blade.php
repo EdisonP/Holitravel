@@ -7,7 +7,30 @@
 	<link rel="stylesheet" href="css/main.css" />
 </head>
 <body>
-@yield('burgermenu')
+
+<!--Error Handling -->
+<div class="container">
+	<div class="row">
+		@if(count($errors) > 0)
+			@foreach($errors->all() as $error)
+				<div class="alert">
+</br>
+				{{$error}}
+				</div>
+			@endforeach
+		@endif
+
+		@if(session ('registerSuccess'))
+		<div class="alert-success">
+</br>
+			{{session('registerSuccess')}}
+		</div>
+		@endif
+	</div>
+</div>
+
+
+@yield('content')
 
 	<!-- Header -->
 	<header id="header">
@@ -51,13 +74,12 @@
 			<ul class="links">
 				<li><a href="index.php">Home</a></li>
 				<li><a href="/login">Login</a></li>
+				<li><a href="/register">Register</a></li>
 			</ul>
 		</nav>
 		<?php
 	}
-	?>
-
-    
+	?>    
 <!-- Scripts -->
 <script src="js/jquery.min.js"></script>
 <script src="js/jquery.scrolly.min.js"></script>

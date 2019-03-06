@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('burgermenu')
+@section('content')
 <!-- Banner -->
 <section id="bannerV">
 		<video src="assets/holidayVid.mp4" alt="" data-position="center" autoplay muted loop>
@@ -21,7 +21,7 @@
 	<div class="content">
 		<div class="inner">
 			<header>
-				<h2>Choose your holiday destination at affordable prices!</h2>
+				<h2 color="black">Choose your holiday destination at affordable prices!</h2>
 			</header>
 		</div>
 		<div class="postnav">

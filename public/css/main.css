@@ -1968,7 +1968,7 @@
 	/* Form */
 
 	form {
-		margin: 0 0 2em 0;
+		margin: 0 2em 2em 2em;
 	}
 
 	label {
@@ -4646,3 +4646,15 @@
         border: 1px solid #ccc;
     }
 }
+
+.alert {
+	padding: 10px;
+	background-color: #f44336;
+	color: white;
+  }
+
+.alert-success{
+	padding: 10px;
+	background-color: #78ff3a;
+	color: black;
+  }

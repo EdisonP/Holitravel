@@ -35,10 +35,13 @@ Route::get('/viewH', function () {
     return view('viewH');
 });
 
-Route::get('/viewUser', function () {
-    return view('viewUser');
-});
 
 Route::get('/login', function () {
     return view('login');
 });
+
+Route::post('/register/submit', 'RegistrationController@submit');
+
+Route::post('/login/submit', 'LoginController@submit');
+
+Route::get('/viewUser', 'ViewUserController@getUser');

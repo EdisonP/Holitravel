@@ -1,30 +1,36 @@
 @extends('layouts.app')
-@section('burgermenu')
+@section('content')
 
 <!-- Main -->
 <section id="main">
-	<div class="inner">
-		<h1>Register</h1>
-		<p>Please fill in this form to create an account.</p>
-		<br>
-		<form action = "php/registerF.php" method = "POST">
-			<b>Enter your first name</b>
-			<input type = "text" placeholder ="Enter your first name" name="fname" required>
-            </br>
-            <b>Enter your last name</b>
-			<input type = "text" placeholder ="Enter your last name" name="lname" required>
-            </br>
-            <b>Enter your email address</b>
-            <input type = "email" placeholder ="Enter Email" name="email" required>
-            </br>
-            <b>Enter your password</b>
-            <input type="password" placeholder="Enter Password" name="password" required>
-            </br>
-            <b>Confirm your password</b>
-            <input type="password" placeholder="Confirm Password" name="cspassword" required>
-            </br>
-            <input type="submit" class="pure-button pure-button-primary" value="SIGN UP"></button>
-        </form>
-    </div>
+<h1>Register</h1>
+
+{!! Form::open(['url' => 'register/submit']) !!}
+<div class="form-group">
+    {{Form::label('fNname', 'First Name')}}
+    {{Form::text('fName', '', ['class' => 'form-control', 'placeholder' => 'Enter First Name'])}}
+</div>
+<div class="form-group">
+    {{Form::label('lName', 'Last Name')}}
+    {{Form::text('lName', '', ['class' => 'form-control', 'placeholder' => 'Enter Last Name'])}}
+</div>
+<div class="form-group">
+    {{Form::label('email', 'Email')}}
+    {{Form::text('email', '', ['class' => 'form-control', 'placeholder' => 'Enter Email'])}}
+</div>
+<div class="form-group">
+    {{Form::label('password', 'Password')}}
+    {{Form::password('password')}}
+</div>
+<div class="form-group">
+    {{Form::label('cPassword', 'Confirm Password')}}
+    {{Form::password('cPassword')}}
+</div>
+</br>
+<div>
+    {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
+</div>
+{!! Form::close() !!}
+
 </section>
 @endsection 

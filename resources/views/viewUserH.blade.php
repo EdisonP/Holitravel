@@ -1,4 +1,4 @@
 @extends('layouts.app')
-@section('burgermenu')
+@section('content')
 <h1>View User Holidays</h1>
 @endsection
