@@ -26,7 +26,7 @@ class RegistrationController extends Controller
                 return redirect('/')->with('registerSuccess', 'Successfully Registered!');
             }
             else {
-                
+                return with('registerFail', 'Invalid Input!');
             }
     }
 }

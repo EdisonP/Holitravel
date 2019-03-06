@@ -8,7 +8,7 @@ use App\User;
 class ViewUserController extends Controller
 {
     public function getUser(){
-        $users = users::all();
+        $users = User::all();
         return view('viewUser')->with('viewUser', $users);
     }
 }
