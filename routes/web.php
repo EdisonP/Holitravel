@@ -28,7 +28,7 @@ Route::get('/editH', function () {
 });
 
 Route::get('/register', function () {
-    return view('register');
+    return view('auth/register');
 });
 
 Route::get('/viewH', function () {
@@ -36,9 +36,13 @@ Route::get('/viewH', function () {
 });
 
 Route::get('/login', function () {
-    return view('login');
+    return view('auth/login');
 });
 
-//Route::get('/welcome', function(){
-//    return view('welcome');
-//});
+Route::get('/welcome', function(){
+    return view('welcome');
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

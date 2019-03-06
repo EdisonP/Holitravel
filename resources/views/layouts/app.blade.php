@@ -1,43 +1,29 @@
-<!DOCTYPE PHP>
-<html>
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-	<title>Holitravel</title>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<link rel="stylesheet" href="css/app.css" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{ config('app.name', 'Holitravel') }}</title>
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
+
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-
-<!--Error Handling -->
-<div class="container">
-	<div class="row">
-		@if(count($errors) > 0)
-			@foreach($errors->all() as $error)
-				<div class="alert alert-warning">
-</br>
-				{{$error}}
-				</div>
-			@endforeach
-		@endif
-
-		@if(session ('registerSuccess'))
-		<div class="alert alert-success">
-</br>
-			{{session('registerSuccess')}}
-		</div>
-		@endif
-	</div>
-</div>
-
-	<!-- Header -->
-	<header id="header">
-		<a href="index.php" class="logo"><strong>Holitravel</strong></a>
-		<nav>
-			<a href="#menu">Menu</a>
-		</nav>
-	</header>
-@yield('content')
-@include('navbarx')
-
-<!-- Scripts -->
+    @include('inc.navbar')
+        <main class="py-4">
+            @yield('content')
+        </main>
+    </div>
 </body>
+</html>
