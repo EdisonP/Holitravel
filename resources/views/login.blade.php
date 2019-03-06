@@ -2,6 +2,8 @@
 @section('content')
 <!-- Main -->
 <section id="main">
+<div class="form-group">
+</br>
 <h1>Login</h1>
 
 {!! Form::open(['url' => 'login/submit']) !!}
@@ -11,13 +13,13 @@
 </div>
 <div class="form-group">
     {{Form::label('password', 'Password')}}
-    {{Form::password('password')}}
+    {{Form::password('password', ['class' => 'form-control', 'placeholder' => 'Enter Password'])}}
 </div>
 </br>
 <div>
     {{Form::submit('Login', ['class' => 'btn btn-primary'])}}
 </div>
 {!! Form::close() !!}
-
+</div>
 </section>
 @endsection 

@@ -56,8 +56,8 @@
 
 } else if (isset($_SESSION['SESS_ADMIN'])) {
 	?>
-	<nav id="nav nav-tabs">
-		<ul class="nav nav-links">
+	<nav id="menu">
+		<ul class="links">
 			<li><a href="/home">Home</a></li>
 			<li><a href="php/logoutF.php">Logout</a></li>
 			<li><a href="/viewH">View/Edit Holidays</a></li>
@@ -67,8 +67,8 @@
 		<?php
 	} else {
 		?>
-		<nav id="nav">
-			<ul class="nav nav-links">
+		<nav id="menu">
+			<ul class="links">
 				<li><a href="index.php">Home</a></li>
 				<li><a href="/login">Login</a></li>
 				<li><a href="/register">Register</a></li>
