@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <!-- Banner -->
+<>
 <section id="bannerV">
 		<video class="banner video" src="assets/holidayVid.mp4" alt="" data-position="center" autoplay muted loop>
 </section>
