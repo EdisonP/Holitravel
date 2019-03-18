@@ -1,0 +1,10 @@
+Ensure these lines are in "C:\xampp\apache\conf\extra\httpd-vhosts"
+
+<VirtualHost *:80>
+	DocumentRoot "C:/xampp/htdocs/Holitravel.public"
+	ServerName holitravel.test
+</VirtualHost>
+
+
+Ensure these lines are in "C:\Windows\System32\drivers\etc\hosts"
+127.0.0.1 holitravel.test
