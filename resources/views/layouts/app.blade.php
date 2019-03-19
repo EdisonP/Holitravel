@@ -61,10 +61,12 @@
                                         {{ __('Logout') }}
                                     </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
+                                    <a class="dropdown-item" href="{{ url('/addH') }}">
+                                        {{ config('Book Holiday', 'Book Holiday') }}
+                                    </a>
                                 </div>
+
+                                
                             </li>
                         @endguest
                     </ul>
