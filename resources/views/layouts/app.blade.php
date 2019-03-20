@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
+<head >
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -21,8 +21,8 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
-            <div class="container">
+        <nav class="navbar navbar-expand-md navbar-light navbar-laravel" >
+            <div class="container" >
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Holitravel') }}
                 </a>
@@ -59,14 +59,16 @@
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
-                                    </a>
-
-                                    <a class="dropdown-item" href="{{ url('/addH') }}">
+                                        
+                                        <!-- Menu item to booking holiday route-->
+                                        <a class="dropdown-item" href="{{ url('/bookH') }}">
                                         {{ config('Book Holiday', 'Book Holiday') }}
-                                    </a>
-                                </div>
+                                        </a>
 
-                                
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
                             </li>
                         @endguest
                     </ul>

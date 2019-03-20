@@ -10662,19 +10662,23 @@ a.text-dark:focus {
 }
 
 #banner,
-	#bannerV {
+  #bannerV,
+  #bannerR,
+  #bannerL{
+    background: url("/assets/bg.jpg");
 		background-color: #ffffff;
 		color: rgba(255, 255, 255, 0.75);
-		text-align: center;
 		cursor: default;
 		padding: 3em 4em 9em 4em;
 	}
 
-	#banner video {
+	#banner video{
+    background-image: "/assets/pic05.jpg";
 		-moz-transform: translateX(50%) translateY(50%);
 		-webkit-transform: translateX(50%) translateY(50%);
 		-ms-transform: translateX(50%) translateY(50%);
-		transform: translateX(50%) translateY(50%);
+    transform: translateX(50%) translateY(50%);
+    text-align: center;
 		position: absolute;
 		bottom: 50%;
 		right: 50%;
@@ -10683,4 +10687,14 @@ a.text-dark:focus {
 		min-width: 100%;
 		min-height: 100%;
 		overflow: hidden;
-	}
+  }
+  
+  #bannerR {
+    text-align: right;
+    padding: 3em 4em 9em 4em;
+  }
+
+  #bannerL {
+    text-align: left;
+    padding: 3em 4em 9em 4em;
+  }

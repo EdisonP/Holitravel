@@ -1,4 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<h1>Edit Holiday</h1>
+<div class="container">
+<h1>Edit Your Holiday</h1>
+</div>
 @endsection

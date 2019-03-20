@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
-<h1>View User</h1>
+<div class="container">
+<h1>View Users</h1>
 
 <section id=''>
 @foreach($userList as $userList => $data)
@@ -11,5 +12,5 @@
     </tr>
 </section>
 @endforeach
-
+</div>
 @endsection
