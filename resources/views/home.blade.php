@@ -20,4 +20,6 @@
         </div>
     </div>
 </div>
+<!-- Timeout script -->
+<script> setTimeout(function(){window.location="/"}, 2000); </script>
 @endsection

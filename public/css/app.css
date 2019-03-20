@@ -66,6 +66,7 @@ section {
 }
 
 body {
+  background-image: url("/assets/bg2.png");
   margin: 0;
   font-family: "Nunito", sans-serif;
   font-size: 0.9rem;
@@ -4738,6 +4739,7 @@ input[type=button].btn-block {
 }
 
 .card {
+  background: url("/assets/bg.jpg");
   position: relative;
   display: flex;
   flex-direction: column;
@@ -10665,15 +10667,12 @@ a.text-dark:focus {
   #bannerV,
   #bannerR,
   #bannerL{
-    background: url("/assets/bg.jpg");
-		background-color: #ffffff;
+		background-color: #f7f7f7;
 		color: rgba(255, 255, 255, 0.75);
 		cursor: default;
-		padding: 3em 4em 9em 4em;
 	}
 
-	#banner video{
-    background-image: "/assets/pic05.jpg";
+	#banner-video{
 		-moz-transform: translateX(50%) translateY(50%);
 		-webkit-transform: translateX(50%) translateY(50%);
 		-ms-transform: translateX(50%) translateY(50%);
