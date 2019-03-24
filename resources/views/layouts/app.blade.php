@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head >
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -19,14 +20,17 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
+
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel" >
-            <div class="container" >
+        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+            <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Holitravel') }}
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -40,36 +44,60 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        </li>
+                        @if (Route::has('register'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        </li>
+                        @endif
                         @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->fname }} <span class="caret"></span>
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::user()->fname }} <span class="caret"></span>
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <!-- User/Admin Navbar -->
+                                <?php
+                                    $userID = Auth::id();
+                                    if ($userID != 1){
+                                        ?>
+
+                                <!-- Menu item to booking holiday route-->
+                                <a class="dropdown-item" href="{{ url('/bookH') }}">
+                                    {{ config('Book Holiday', 'Book Holiday') }}
+                                </a>
+                                <!-- Menu item to viewing user's holiday route-->
+                                <a class="dropdown-item" href="{{ url('/viewUserH') }}">
+                                    {{ config('View Your Holiday', 'View Your Holiday') }}
+                                </a>
+                                <?php
+                                    } else{
+                                        ?>
+                                <!-- Menu item to view all users route-->
+                                <a class="dropdown-item" href="{{ url('/viewUser') }}">
+                                    {{ config('View User List', 'View User List') }}
+                                </a>
+                                <!-- Menu item to list of holiday route-->
+                                <a class="dropdown-item" href="{{ url('/viewH') }}">
+                                    {{ config('View Holiday List', 'View Holiday List') }}
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <!-- Logout -->
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();">{{ __('Logout') }}
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-
-                                    <!-- Menu item to booking holiday route-->
-                                    <a class="dropdown-item" href="{{ url('/bookH') }}">
-                                        {{ config('Book Holiday', 'Book Holiday') }}
-                                        </a>
-                                </div>
-                            </li>
+                                <?php
+                                    }
+                                    ?>
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}</a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                    style="display: none;">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
                         @endguest
                     </ul>
                 </div>
@@ -81,4 +109,5 @@
         </main>
     </div>
 </body>
+
 </html>

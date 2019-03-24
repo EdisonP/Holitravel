@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-		    <div class="form-group">
+            <div class="form-group">
                 <div class="modal-dialog">
                     <h1 style="text-align: center">Oops, You just arrived into the wrong neighbourhood</h1>
                     </br>
@@ -15,5 +15,9 @@
 </div>
 
 <!-- Timeout script -->
-<script> setTimeout(function(){window.location="/"}, 3000); </script>
+<script>
+setTimeout(function() {
+    window.location = "/"
+}, 3000);
+</script>
 @endsection

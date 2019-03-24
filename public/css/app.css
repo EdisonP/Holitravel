@@ -1627,6 +1627,7 @@ pre code {
 
 .table th,
 .table td {
+  color: black;
   padding: 0.75rem;
   vertical-align: top;
   border-top: 1px solid #dee2e6;
@@ -10667,9 +10668,9 @@ a.text-dark:focus {
   #bannerV,
   #bannerR,
   #bannerL{
-		background-color: #f7f7f7;
+    background-color: #f7f7f7;
 		color: rgba(255, 255, 255, 0.75);
-		cursor: default;
+    cursor: default;
 	}
 
 	#banner-video{
