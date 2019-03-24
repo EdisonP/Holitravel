@@ -78,11 +78,11 @@
                                     } else{
                                         ?>
                                 <!-- Menu item to view all users route-->
-                                <a class="dropdown-item" href="{{ url('/viewUser') }}">
+                                <a class="dropdown-item" href="{{ url('/viewUserList') }}">
                                     {{ config('View User List', 'View User List') }}
                                 </a>
                                 <!-- Menu item to list of holiday route-->
-                                <a class="dropdown-item" href="{{ url('/viewH') }}">
+                                <a class="dropdown-item" href="{{ url('/viewHList') }}">
                                     {{ config('View Holiday List', 'View Holiday List') }}
                                 </a>
 

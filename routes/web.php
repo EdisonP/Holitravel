@@ -33,17 +33,17 @@ Route::get('/editH', function () {
     return view('internals.editH');
 });
 
-Route::get('/viewH', function () {
+Route::get('/viewHList', function () {
     if (!Auth::check())
             return redirect('/login');
-    return view('internals.viewH');
+    return view('internals.viewHList');
 });
 
-Route::get('/viewUser', function () {
+Route::get('/viewUserList', function () {
     if (!Auth::check() || Auth::user()->id !== 1)
             return redirect('/oops');
     $userList = DB::table('users')->get();
-    return view('internals.viewUser', ['userList' => $userList]);
+    return view('internals.viewUserList', ['userList' => $userList]);
 });
 
 Route::get('/viewUserH', function () {
