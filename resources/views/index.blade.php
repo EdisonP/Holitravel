@@ -1,12 +1,14 @@
 @extends('layouts.app')
 @section('content')
 <!-- Banner -->
-<div id="banner" style="text-align: center">
-    <video class="banner-video" src="assets/holidayVid.mp4" alt="" data-position="center" autoplay muted loop>
-</div>
+<div class ="card">
+
 
 <!-- Guest views, before login-->
 @guest
+<div id="banner" style="text-align: center">
+    <video class="banner-video" src="assets/holidayVid.mp4" alt="" data-position="center" autoplay muted loop>
+</div>
 <hr>
 <div id="bannerR">
     <img src="assets/pic01.jpg">
@@ -26,7 +28,10 @@
 $userID = Auth::id();
 if ($userID != 1){
 ?>
-<p>user</p>
+<div id="banner" style="text-align: center">
+    <video class="banner-video" src="assets/holidayVid.mp4" alt="" data-position="center" autoplay muted loop>
+</div>
+<hr>
 <div id="bannerR">
     <img src="assets/pic01.jpg">
     <div class="card">
@@ -38,9 +43,9 @@ if ($userID != 1){
 ?>
 <p>admin</p>
 <hr>
-
 <?php
 }
 ?>
 @endguest
+</div>
 @endsection

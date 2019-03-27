@@ -1,7 +1,8 @@
 <?php
-namespace App\Http\Controllers;
+namespace Holitravel\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class UserController extends Controller
 {
@@ -14,7 +15,7 @@ class UserController extends Controller
     {
         $users = User::all();
 
-        return view('index', compact('users'));
+        return view('/index', compact('users'));
     }
 
     /**
@@ -40,9 +41,9 @@ class UserController extends Controller
             'lName' => 'required|max:255',
             'email' => 'required|max:255',
         ]);
-        $book = Book::create($validatedData);
+        $user = User::create($validatedData);
 
-        return redirect('/viewUser')->with('success', 'User is successfully saved');
+        return redirect('/viewUserList')->with('success', 'User is successfully saved');
     }
 
     /**
@@ -66,7 +67,7 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
 
-        return view('editUser', compact('user'));
+        return view('internals.editUser', compact('users'));
     }
 
     /**
@@ -79,13 +80,13 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'fName' => 'required|max:255',
-            'lName' => 'required|max:255',
+            'fname' => 'required|max:255',
+            'lname' => 'required|max:255',
             'email' => 'required|max:255',
         ]);
-        Book::whereId($id)->update($validatedData);
+        User::whereId($id)->update($validatedData);
 
-        return redirect('/viewUser')->with('success', 'User is successfully updated');
+        return redirect('/viewUserList')->with('success', 'User is successfully updated');
     }
 
     /**
@@ -96,9 +97,9 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::findOrFail($id);
-        $user->delete();
+        $users = User::findOrFail($id);
+        $users->delete();
 
-        return redirect('/viewUser')->with('success', 'User is successfully deleted');
+        return redirect('/viewUserList')->with('success', 'User is successfully deleted');
     }
 }

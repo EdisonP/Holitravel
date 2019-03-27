@@ -43,7 +43,7 @@ Route::get('/viewUserList', function () {
     if (!Auth::check() || Auth::user()->id !== 1)
             return redirect('/oops');
     $userList = DB::table('users')->get();
-    return view('internals.viewUserList', ['userList' => $userList]);
+    return view('internals.viewUserList', ['users' => $userList]);
 });
 
 Route::get('/viewUserH', function () {
@@ -60,10 +60,6 @@ Route::get('/register', function () {
     return view('auth.register');
 });
 
-Route::get('/welcome', function(){
-    return view('welcome');
-});
-
 Route::get('/oops', function(){
     return view('internals.oops');
 });
@@ -71,3 +67,4 @@ Route::get('/oops', function(){
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('users', 'UserController');

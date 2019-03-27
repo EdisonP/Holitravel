@@ -1,26 +1,46 @@
 @extends('layouts.app')
 @section('content')
-<div class="container">
-    <div class="banner">
-        <div class="card">
-            <div class="card-header">
-                <h1>View Users</h1>
-                <div class="card-subtitle">
-                    <table style="width:100%">
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Email</th>
-                        @foreach($userList as $userList => $data)
-                        <tr>
-                            <td>{{$data->fname}}</td>
-                            <td>{{$data->lname}}</td>
-                            <td>{{$data->email}}</td>
-                        </tr>
-                        @endforeach
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<?php 
+
+?>
+ 
+<style>
+  .uper {
+    margin-top: 40px;
+  }
+</style>
+<div class="card">
+  @if(session()->get('success'))
+    <div class="alert alert-success">
+      {{ session()->get('success') }}  
+    </div><br />
+  @endif
+  <table class="table table-striped">
+    <thead>
+        <tr>
+          <td>First Name</td>
+          <td>Last/Sir Name</td>
+          <td>Email</td>
+          <td colspan="2">Action</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach($users as $user)
+        <tr>
+            <td>{{$user->fname}}</td>
+            <td>{{$user->lname}}</td>
+            <td>{{$user->email}}</td>
+            <td><a href="{{ route('users.edit',$user->id)}}" class="btn btn-primary">Edit</a></td>
+            <td>
+                <form action="{{ route('users.destroy', $user->id)}}" method="post">
+                  @csrf
+                  @method('DELETE')
+                  <button class="btn btn-danger" type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+        @endforeach
+    </tbody>
+  </table>
+<div>
 @endsection
