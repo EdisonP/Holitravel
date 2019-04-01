@@ -15,10 +15,10 @@ class HolidayController extends Controller
     public function index()
     {
 
-        $holidayList = Holidays::all();
+        $holidays = Holidays::all();
         //echo $holidayList;
-        //dd($holidayList);
-        return view('index')->with(compact('$holidayList'));
+        //dd($holidays);
+        return view('internals.viewHList', compact('holidays'));
     }
 
     /**

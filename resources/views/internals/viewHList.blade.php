@@ -33,7 +33,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($holidayList as $holiday)
+            @foreach($holidays as $holiday)
             <tr>
                 <td>{{$holiday->travelID}}</td>
                 <td>{{$holiday->created_at}}</td>
@@ -45,9 +45,9 @@
                 <td>{{$holiday->elderly}}</td>
                 <td>{{$holiday->DateOfFlight}}</td>
                 <td>{{$holiday->status}}</td>
-                <td><a href="{{ route('holidayList.edit',$holiday->travelID)}}" class="btn btn-primary">Edit</a></td>
+                <td><a href="{{ route('holidays.edit',$holiday->travelID)}}" class="btn btn-primary">Edit</a></td>
                 <td>
-                    <form action="{{ route('holidayList.destroy', $holiday->travelID)}}" method="post">
+                    <form action="{{ route('holidays.destroy', $holiday->travelID)}}" method="post">
                         @csrf
                         @method('DELETE')
                         <button class="btn btn-danger" type="submit">Delete</button>

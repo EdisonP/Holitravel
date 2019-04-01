@@ -41,7 +41,6 @@ class User extends Authenticatable
 
 class Users extends Model
 {
-    use Notifiable;
 
     /**
      * The attributes that are mass assignable.
