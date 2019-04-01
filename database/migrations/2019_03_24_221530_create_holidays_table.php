@@ -14,10 +14,15 @@ class CreateHolidaysTable extends Migration
     public function up()
     {
         Schema::create('holidays', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('travelID');
             $table->timestamps();
-            $table->string('country');      
-            //fill parameters
+            $table->string('toDest');      
+            $table->string('fromDest'); 
+            $table->integer('child'); 
+            $table->integer('adult'); 
+            $table->integer('elderly'); 
+            $table->date('dateOfFlight'); 
+            $table->boolean('status'); 
         });
     }
 

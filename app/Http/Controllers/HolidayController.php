@@ -2,10 +2,10 @@
 
 namespace Holitravel\Http\Controllers;
 
-use Holitravel\User;
 use Illuminate\Http\Request;
+use Holitravel\Holidays;
 
-class UserController extends Controller
+class HolidayController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        dd($users);
-        return view('/index', compact('users'));
+
+        $holidayList = Holidays::all();
+        //echo $holidayList;
+        //dd($holidayList);
+        return view('index')->with(compact('$holidayList'));
     }
 
     /**
@@ -38,13 +40,13 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'fName' => 'required|max:255',
-            'lName' => 'required|max:255',
-            'email' => 'required|max:255',
+            'holiday_name' => 'required|max:255',
+            'isbn_no' => 'required|alpha_num',
+            'holiday_price' => 'required|numeric',
         ]);
-        $users = User::create($validatedData);
+        $holiday = holiday::create($validatedData);
 
-        return redirect('/viewUserList')->with('success', 'User is successfully saved');
+        return redirect('/viewHList')->with('success', 'holiday is successfully saved');
     }
 
     /**
@@ -66,9 +68,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $users = User::findOrFail($id);
+        $holidays = Holiday::findOrFail($id);
 
-        return view('internals.editUser', compact('users'));
+        return view('edit', compact('holidays'));
     }
 
     /**
@@ -81,13 +83,13 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'fname' => 'required|max:255',
-            'lname' => 'required|max:255',
-            'email' => 'required|max:255',
+            'holiday_name' => 'required|max:255',
+            'isbn_no' => 'required|alpha_num',
+            'holiday_price' => 'required|numeric',
         ]);
-        User::whereId($id)->update($validatedData);
+        Holiday::whereId($id)->update($validatedData);
 
-        return redirect('/viewUserList')->with('success', 'User is successfully updated');
+        return redirect('/viewHList')->with('success', 'holiday is successfully updated');
     }
 
     /**
@@ -98,9 +100,9 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::findOrFail($id);
-        $user->delete($id);
+        $holiday = holiday::findOrFail($id);
+        $holiday->delete();
 
-        return redirect('/viewUserList')->with('success', 'User is successfully deleted');
+        return redirect('/viewHList')->with('success', 'holiday is successfully deleted');
     }
 }

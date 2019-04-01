@@ -25,6 +25,8 @@ class CreateUsersTable extends Migration
         });
     }
 
+    //First registered user will always be admin
+
     /**
      * Reverse the migrations.
      *
