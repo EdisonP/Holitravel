@@ -15,6 +15,7 @@
         {{ session()->get('success') }}
     </div><br />
     @endif
+    <div class="class-body">
     <!-- Holiday Table List -->
     <table class="table table-striped">
         <thead>
@@ -44,8 +45,8 @@
                 <td>{{$holiday->adult}}</td>
                 <td>{{$holiday->elderly}}</td>
                 <td>{{$holiday->DateOfFlight}}</td>
+                <!-- status to string-->
                 <td>{{$holiday->status}}</td>
-                <td><a href="{{ route('holidays.edit',$holiday->travelID)}}" class="btn btn-primary">Edit</a></td>
                 <td>
                     <form action="{{ route('holidays.destroy', $holiday->travelID)}}" method="post">
                         @csrf
@@ -57,5 +58,6 @@
             @endforeach
         </tbody>
     </table>
-    <div>
+    </div>
+    </div>
         @endsection
