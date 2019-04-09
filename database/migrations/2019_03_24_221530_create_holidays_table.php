@@ -15,6 +15,13 @@ class CreateHolidaysTable extends Migration
     {
         Schema::create('holidays', function (Blueprint $table) {
             $table->bigIncrements('travelID');
+
+            //foreign key for User ID
+            $table->bigInteger('user_id')->unsigned();
+            $table  ->foreign('user_id')
+                    ->references('id')->on('users')
+                    ->onDelete('cascade');
+
             $table->timestamps();
             $table->string('toDest');      
             $table->string('fromDest'); 
@@ -23,6 +30,7 @@ class CreateHolidaysTable extends Migration
             $table->integer('elderly'); 
             $table->date('dateOfFlight'); 
             $table->boolean('status'); 
+            $table->index('user_id');
         });
     }
 

@@ -1,9 +1,5 @@
 @extends('layouts.app')
 @section('content')
-<?php 
-
-?>
- 
 <style>
   .uper {
     margin-top: 40px;
@@ -31,6 +27,7 @@
             <td>{{$user->fname}}</td>
             <td>{{$user->lname}}</td>
             <td>{{$user->email}}</td>
+            <td><a href="{{ route('users.edit',$user->id)}}" class="btn btn-primary">Edit</a></td>
             <td>
                 <form action="{{ route('users.destroy', $user->id)}}" method="post">
                   @csrf

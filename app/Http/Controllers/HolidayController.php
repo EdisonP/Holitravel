@@ -14,10 +14,16 @@ class HolidayController extends Controller
      */
     public function index()
     {
-
         $holidays = Holidays::all();
-        //echo $holidayList;
-        //dd($holidays);
+        return view('internals.viewHList', compact('holidays'));
+    }
+
+    /**
+     * Display a listing of resource from user_id
+     */
+    public function userIndex()
+    {
+        $holidays = Holidays::where('user_id', \Auth::id())->get();
         return view('internals.viewHList', compact('holidays'));
     }
 

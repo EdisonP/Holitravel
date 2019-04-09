@@ -13,7 +13,7 @@ class Holidays extends Model
      * @var array
      */
     protected $fillable = [
-        'DateOfFlight', 'status'
+        'dateOfFlight', 'status'
     ];
 
     /**
@@ -22,6 +22,6 @@ class Holidays extends Model
      * @var array
      */
     protected $hidden = [
-        'toDest', 'fromDest', 'child', 'adult', 'elderly'
+        'user_id', 'toDest', 'fromDest', 'child', 'adult', 'elderly'
     ];
 }

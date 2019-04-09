@@ -35,32 +35,10 @@ Route::get('/editH', function () {
 
 Route::get('/viewHList', 'HolidayController@index')->middleware('auth');
 
-/*
-Route::get('/viewHList', function () {
-    if (!Auth::check() || Auth::user()->id !== 1){
-        return redirect('/login');}     
-            $holidayList = DB::table('holidays')->get();
-    return view('internals.viewHList', ['holidays' => $holidayList]);
-})->middleware('auth');
-*/
-
 Route::get('/viewUserList', 'UserController@index')->middleware('auth');
 
-/*
+Route::get('/viewUserH', 'HolidayController@userIndex')->middleware('auth'); 
 
-Route::get('/viewUserList', function () {
-    if (!Auth::check() || Auth::user()->id !== 1){
-        return redirect('/oops');}
-    $userList = DB::table('users')->get();
-    return view('internals.viewUserList', ['users' => $userList]);
-})->middleware('auth');
-*/
-
-Route::get('/viewUserH', function () {
-    if (!Auth::check())
-            return redirect('/login');
-    return view('internals.viewUserH');
-})->middleware('auth');
 
 Route::get('/login', function () {
     return view('auth.login');

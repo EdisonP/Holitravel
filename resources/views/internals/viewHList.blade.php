@@ -1,9 +1,5 @@
 @extends('layouts.app')
 @section('content')
-<?php 
-
-?>
-
 <style>
 .uper {
     margin-top: 40px;
@@ -22,7 +18,6 @@
             <tr>
                 <td>ID</td>
                 <td>Created</td>
-                <td>Updated</td>
                 <td>Destination</td>
                 <td>From</td>
                 <td>Child</td>
@@ -38,13 +33,12 @@
             <tr>
                 <td>{{$holiday->travelID}}</td>
                 <td>{{$holiday->created_at}}</td>
-                <td>{{$holiday->updated_at}}</td>
                 <td>{{$holiday->toDest}}</td>
                 <td>{{$holiday->fromDest}}</td>
                 <td>{{$holiday->child}}</td>
                 <td>{{$holiday->adult}}</td>
                 <td>{{$holiday->elderly}}</td>
-                <td>{{$holiday->DateOfFlight}}</td>
+                <td>{{$holiday->dateOfFlight}}</td>
                 <!-- status to string-->
                 <td>{{$holiday->status}}</td>
                 <td>

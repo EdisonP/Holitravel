@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +16,6 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        //dd($users);
         return view('internals.viewUserList', compact('users'));
     }
 
@@ -104,3 +104,4 @@ class UserController extends Controller
         return redirect('/viewUserList')->with('success', 'User is successfully deleted');
     }
 }
+
