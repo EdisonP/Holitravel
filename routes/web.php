@@ -65,7 +65,6 @@ Route::resources([
 
 
 //testing page *************************************************************
-/*Route::get('/test',function (){
+Route::get('/test',function (){
     return view('test');
-});*/
-Route::get('/test', 'TestController@index');
+});
