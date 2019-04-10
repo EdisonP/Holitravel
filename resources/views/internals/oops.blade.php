@@ -5,9 +5,11 @@
         <div class="col-md-8">
             <div class="form-group">
                 <div class="modal-dialog">
-                    <h1 style="text-align: center">Oops, You just arrived into the wrong neighbourhood</h1>
-                    </br>
-                    <h4 style="text-align: center; color: blue">You will be redirected shortly............</h6>
+                    <div class="card">
+                        <h1 style="text-align: center">Oops, You just arrived into the wrong neighbourhood</h1>
+                        </br>
+                        <h4 style="text-align: center; color: blue">You will be redirected shortly............</h6>
+                    </div>
                 </div>
             </div>
         </div>

@@ -54,9 +54,18 @@ Route::get('/oops', function(){
 
 Auth::routes();
 
+Auth::routes(['reset' => false]);
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resources([
     'users' => 'UserController',
     'holidays' => 'HolidayController'
 ]);
+
+
+//testing page *************************************************************
+/*Route::get('/test',function (){
+    return view('test');
+});*/
+Route::get('/test', 'TestController@index');
