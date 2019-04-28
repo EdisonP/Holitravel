@@ -62,9 +62,3 @@ Route::resources([
     'users' => 'UserController',
     'holidays' => 'HolidayController'
 ]);
-
-
-//testing page *************************************************************
-Route::get('/test',function (){
-    return view('test');
-});
