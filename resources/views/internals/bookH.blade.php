@@ -43,53 +43,72 @@
 <div class="container">
     <div class="card">
         <h1>Book Holiday</h1>
-        <form>
+        <form method="POST" action="/booking">
+        {{ csrf_field() }}
+        
+            <div class="card">
+                <div class="form-group row">
+                    <label for="name" class="col-md-4 col-form-label text-md-right">Where are you flying from: </label>
+                    <div class="col-md-6">
+                        <select class="form-control" name="toDest" id="toDest">
+                            <?php foreach($destArrays as $dest) { 
+                        ?>
+                            <option value="LON">London</option>
+                            <?php } 
+                        ?> </select>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="name" class="col-md-4 col-form-label text-md-right">Current HOT Destinations: </label>
+                    <div class="col-md-6">
+                        <select class="form-control" name="fromDest" id="toDest">
+                            <?php foreach($destArrays as $dest) { 
+                        ?>
+                            <option value="<?php echo($dest->destination);?>">
+                                <?php echo($dest->destination);
+                            ?>
+                            </option>
+                            <?php } 
+                        ?> </select>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="name" class="col-md-4 col-form-label text-md-right">Departure date:</label>
+                    <div class="col-md-6">
+                        <input id="dateOfFlight" type="date" name="dateOfFlight" required autofocus>
+                    </div>
+                </div>
+
+                <div class="card" style="color: black; text-align: center">Passengers</div>
+
+                <div class="form-group row">
+                    <label for="name" class="col-md-4 col-form-label text-md-right">Adults</label>
+                    <div class="col-md-6">
+                        <input id="adult" type="number" name="adult" value=0 required autofocus>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="name" class="col-md-4 col-form-label text-md-right">Child</label>
+                    <div class="col-md-6">
+                        <input id="child" type="number" name="child" value=0 required autofocus>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="name" class="col-md-4 col-form-label text-md-right">Elderly</label>
+                    <div class="col-md-6">
+                        <input id="elderly" type="number" name="elderly" value=0 required autofocus>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row mb-0">
+                <div class="col-md-6 offset-md-5">
+                    <input type="submit" value="Book Holiday" class="btn btn-primary">
+                </div>
+            </div>
         </form>
-        <div class="card">
-            <div class="form-group row">
-                <label for="name" class="col-md-4 col-form-label text-md-right">Destination</label>
-                <div class="col-md-6">
-                    <select class="form-control" name="toDest" id="toDest">
-                        <?php foreach($destArrays as $dest) { 
-                        ?>
-                        <option value="<?php echo($dest->destination);?>">
-                            <?php echo($dest->destination);
-                            ?>
-                        </option> 
-                        <?php } 
-                        ?> </select>
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <label for="name" class="col-md-4 col-form-label text-md-right">Destination</label>
-                <div class="col-md-6">
-                    <select class="form-control" name="fromDest" id="toDest">
-                        <?php foreach($destArrays as $dest) { 
-                        ?>
-                        <option value="<?php echo($dest->destination);?>">
-                            <?php echo($dest->destination);
-                            ?>
-                        </option> 
-                        <?php } 
-                        ?> </select>
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <label for="name" class="col-md-4 col-form-label text-md-right">Destination</label>
-                <div class="col-md-6">
-                    <select class="form-control" name="toDest" id="toDest">
-                        <?php foreach($destArrays as $dest) { 
-                        ?>
-                        <option value="<?php echo($dest->destination);?>">
-                            <?php echo($dest->destination);
-                            ?>
-                        </option> 
-                        <?php } 
-                        ?> </select>
-                </div>
-            </div>
-        </div>
     </div>
 </div> @endsection

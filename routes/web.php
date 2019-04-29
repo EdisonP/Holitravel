@@ -40,6 +40,11 @@ Route::get('/viewUserList', 'UserController@index')->middleware('auth');
 Route::get('/viewUserH', 'HolidayController@userIndex')->middleware('auth'); 
 
 
+Route::get('/chat', function(){
+    return view('internals.chat');
+})->middleware('auth');
+
+
 Route::get('/login', function () {
     return view('auth.login');
 });
@@ -52,11 +57,20 @@ Route::get('/oops', function(){
     return view('internals.oops');
 });
 
+Route::get('/bookSuccess', function(){
+    return view('internals.bookSuccess');
+});
+
+
 Auth::routes();
 
 Auth::routes(['reset' => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');
+ 
+Route::get('/bookH','HolidayController@create');
+ 
+Route::post('/booking','HolidayController@storeHoliday');
 
 Route::resources([
     'users' => 'UserController',

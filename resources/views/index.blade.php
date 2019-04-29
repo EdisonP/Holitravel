@@ -41,10 +41,11 @@ if ($userID != 1){
 <?php
 } else{
 ?>
-<p>admin</p>
-<hr>
-
-
+<div id="banner" style="text-align: center">
+    <div class="card">
+        <h1 style="color: black; text-align: center">Welcome Admin</h1>
+    </div>
+</div>
 <?php
 }
 ?>

@@ -4,6 +4,7 @@ namespace Holitravel\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Holitravel\Holidays;
+use Auth;
 
 class HolidayController extends Controller
 {
@@ -34,7 +35,7 @@ class HolidayController extends Controller
      */
     public function create()
     {
-        return view('create');
+        return view('internals.bookH');
     }
 
     /**
@@ -90,7 +91,6 @@ class HolidayController extends Controller
     {
         $validatedData = $request->validate([
             'holiday_name' => 'required|max:255',
-            'isbn_no' => 'required|alpha_num',
             'holiday_price' => 'required|numeric',
         ]);
         Holiday::whereId($id)->update($validatedData);
@@ -110,5 +110,22 @@ class HolidayController extends Controller
         $holiday->delete();
 
         return redirect('/viewHList')->with('success', 'holiday is successfully deleted');
+    }
+ 
+    public function storeHoliday(){
+ 
+        $Holiday = new Holidays();
+ 
+        $Holiday->toDest = request('toDest');
+        $Holiday->fromDest = request('fromDest');
+        $Holiday->dateOfFlight = request('dateOfFlight');
+        $Holiday->adult = request('adult');
+        $Holiday->child = request('child');
+        $Holiday->elderly = request('elderly');
+        $Holiday->user_id = Auth::user()->id;
+        $Holiday->status = 0;
+        $Holiday->save();
+ 
+        return redirect('/bookSuccess');
     }
 }

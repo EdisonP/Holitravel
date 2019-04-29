@@ -48,15 +48,17 @@
                                 @endif
                             </div>
                         </div>
-                        <div class = "card">
+                        </table>
+                        <p id="passwordHelpBlock" class="form-text text-muted" style="color = red;">
+                        
+                        <div class = "card" style="color: black; text-align: center">
+                            <h3>Password Requirements</h1>
                             <p>Should have At least one Uppercase letter.</p>
                             <p>At least one Lower case letter.</p>
                             <p>Also,At least one numeric value.</p>
                             <p>And, At least one special character.</p>
                             <p>Must be more than 6 characters long.</p>
                         </div>
-                        </table>
-                        <p id="passwordHelpBlock" class="form-text text-muted" style="color = red;">
                             <div class="form-group row">
                                 <label for="password"
                                     class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
@@ -64,7 +66,6 @@
                                     <input id="password" type="password"
                                         class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
                                         name="password" required>
-
                                     @if ($errors->has('password'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('password') }}</strong>
@@ -72,7 +73,6 @@
                                     @endif
                                 </div>
                             </div>
-
 
                             <div class="form-group row">
                                 <label for="password-confirm"
