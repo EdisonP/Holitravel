@@ -5,6 +5,7 @@ namespace Holitravel\Http\Controllers;
 use Illuminate\Http\Request;
 use Holitravel\Holidays;
 use Auth;
+use Illuminate\Support\Facades\DB;
 
 class HolidayController extends Controller
 {
@@ -24,8 +25,10 @@ class HolidayController extends Controller
      */
     public function userIndex()
     {
-        $holidays = Holidays::where('user_id', \Auth::id())->get();
-        return view('internals.viewHList', compact('holidays'));
+        $user_id = Auth::user()->id;
+        $holidays =  DB::table('holidays')->where('user_id', $user_id)->get();
+        
+        return view('internals.viewUserH', compact('holidays'));
     }
 
     /**

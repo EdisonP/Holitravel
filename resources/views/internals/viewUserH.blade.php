@@ -26,7 +26,6 @@
                     <td>Elderly</td>
                     <td>Date of Flight</td>
                     <td>Status</td>
-                    <td colspan="2">Action</td>
                 </tr>
             </thead>
             <tbody>
@@ -40,8 +39,11 @@
                     <td>{{$holiday->adult}}</td>
                     <td>{{$holiday->elderly}}</td>
                     <td>{{$holiday->dateOfFlight}}</td>
-                    <!-- status to string-->
-                    <td>{{$holiday->status}}</td>
+                    <td><?php if ($holiday->status == 0){
+                    echo "Scheduled";
+                }else {
+                    echo "Completed";
+                }?></td>
                     <td>
                     </td>
                 </tr>
