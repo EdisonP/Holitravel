@@ -20,7 +20,7 @@
     $api_token = $token_json->access_token;
                 
     $client2 = new GuzzleHttp\Client();
-    $response = $client2->request('GET', 'https://test.api.amadeus.com/v1/travel/analytics/air-traffic/booked?originCityCode=MAD&period=2017-08', [
+    $response = $client2->request('GET', 'https://test.api.amadeus.com/v1/travel/analytics/air-traffic/booked?originCityCode=LON&period=2017-08', [
         'headers' => [
             'Authorization' => 'Bearer ' . $api_token
         ],
