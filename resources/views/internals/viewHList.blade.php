@@ -40,7 +40,11 @@
                 <td>{{$holiday->elderly}}</td>
                 <td>{{$holiday->dateOfFlight}}</td>
                 <!-- status to string-->
-                <td>{{$holiday->status}}</td>
+                <td><?php if ($holiday->status == 0){
+                    echo "Scheduled";
+                }else {
+                    echo "Completed";
+                }?></td>
                 <td>
                     <form action="{{ route('holidays.destroy', $holiday->travelID)}}" method="post">
                         @csrf
