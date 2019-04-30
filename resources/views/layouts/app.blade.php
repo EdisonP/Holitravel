@@ -25,6 +25,17 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+            <script type="text/javascript">
+            window.$crisp = [];
+            window.CRISP_WEBSITE_ID = "bf404f10-8568-4433-a58d-159e1f32c8db";
+            (function() {
+                d = document;
+                s = d.createElement("script");
+                s.src = "https://client.crisp.chat/l.js";
+                s.async = 1;
+                d.getElementsByTagName("head")[0].appendChild(s);
+            })();
+            </script>
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Holitravel') }}
