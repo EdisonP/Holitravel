@@ -63,16 +63,15 @@ Route::get('/bookSuccess', function(){
 
 
 Auth::routes();
-
 Auth::routes(['reset' => false]);
-
-Route::get('/home', 'HomeController@index')->name('home');
- 
+Route::get('/home', 'HomeController@index')->name('index');
 Route::get('/bookH','HolidayController@create');
- 
 Route::post('/booking','HolidayController@storeHoliday');
-
 Route::resources([
     'users' => 'UserController',
     'holidays' => 'HolidayController'
 ]);
+
+Route::get('/chat', 'ChatsController@index');
+Route::get('messages', 'ChatsController@fetchMessages');
+Route::post('messages', 'ChatsController@sendMessage');
