@@ -39,6 +39,8 @@ Route::get('/viewUserList', 'UserController@index')->middleware('auth');
 
 Route::get('/viewUserH', 'HolidayController@userIndex')->middleware('auth'); 
 
+Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider');
+Route::get('login/{provider}/callback','Auth\LoginController@handleProviderCallback');
 
 Route::get('/chat', function(){
     return view('internals.chat');
