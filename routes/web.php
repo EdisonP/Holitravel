@@ -27,12 +27,6 @@ Route::get('/bookH', function () {
     return view('internals.bookH');
 })->middleware('auth');
 
-Route::get('/editH', function () {
-    if (!Auth::check() || Auth::user()->id !== 1)
-            return redirect('/oops');
-    return view('internals.editH');
-})->middleware('auth');
-
 Route::get('/viewHList', 'HolidayController@index')->middleware('auth');
 
 Route::get('/viewUserList', 'UserController@index')->middleware('auth');
