@@ -16,8 +16,9 @@ class HolidayController extends Controller
      */
     public function index()
     {
-        $user_id = Auth::user()->id;
-        if ($user_id !== 1){
+        if (Auth::guest()){
+            return view('internals.oops');
+        }elseif (Auth::user()->id !== 1){
             return view('internals.oops');
         }
         $holidays = Holidays::all();
@@ -29,6 +30,9 @@ class HolidayController extends Controller
      */
     public function userIndex()
     {
+        if (Auth::guest()){
+            return view('internals.oops');
+        }
         $user_id = Auth::user()->id;
         $holidays =  DB::table('holidays')->where('user_id', $user_id)->get();
         
@@ -81,8 +85,12 @@ class HolidayController extends Controller
      */
     public function edit($id)
     {
+        if (Auth::guest()){
+            return view('internals.oops');
+        }elseif (Auth::user()->id !== 1){
+            return view('internals.oops');
+        }
         $holidays = Holidays::where('travelID', $id)->firstOrFail();
-
         return view('internals.editH', compact('holidays'));
     }
 
@@ -95,6 +103,12 @@ class HolidayController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if (Auth::guest()){
+            return view('internals.oops');
+        }elseif (Auth::user()->id !== 1){
+            return view('internals.oops');
+        }
+
         $validatedData = $request->validate([
             'fromDest' => 'required|max:255|regex:[A-Za-z1-9 ]',
             'toDest' => 'required|max:255|regex:[A-Za-z1-9 ]',
@@ -116,6 +130,11 @@ class HolidayController extends Controller
      */
     public function destroy($id)
     {
+        if (Auth::guest()){
+            return view('internals.oops');
+        }elseif (Auth::user()->id !== 1){
+            return view('internals.oops');
+        }
         $holiday = holiday::findOrFail($id);
         $holiday->delete();
 

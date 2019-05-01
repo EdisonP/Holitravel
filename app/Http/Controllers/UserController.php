@@ -16,8 +16,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user_id = Auth::user()->id;
-        if ($user_id !== 1){
+        if (Auth::guest()){
+            return view('internals.oops');
+        }elseif (Auth::user()->id !== 1){
             return view('internals.oops');
         }
         $users = User::all();
@@ -71,8 +72,12 @@ class UserController extends Controller
      */
     public function edit($id)
     {
+        if (Auth::guest()){
+            return view('internals.oops');
+        }elseif (Auth::user()->id !== 1){
+            return view('internals.oops');
+        }
         $users = User::findOrFail($id);
-
         return view('internals.editUser', compact('users'));
     }
 
@@ -85,10 +90,14 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if (Auth::guest()){
+            return view('internals.oops');
+        }elseif (Auth::user()->id !== 1){
+            return view('internals.oops');
+        }
         $validatedData = $request->validate([
             'fname' => 'required|max:255|regex:[A-Za-z1-9 ]',
             'lname' => 'required|max:255|regex:[A-Za-z1-9 ]',
-            'email' => 'required|max:255|regex:[A-Za-z1-9 ]',
         ]);
         User::whereId($id)->update($validatedData);
 
@@ -103,6 +112,11 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
+        if (Auth::guest()){
+            return view('internals.oops');
+        }elseif (Auth::user()->id !== 1){
+            return view('internals.oops');
+        }
         $user = User::findOrFail($id);
         $user->delete($id);
 
