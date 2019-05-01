@@ -4,6 +4,7 @@ namespace Holitravel\Http\Controllers;
 
 use Holitravel\User;
 use Illuminate\Http\Request;
+use Auth;
 
 class UserController extends Controller
 {
@@ -15,6 +16,10 @@ class UserController extends Controller
      */
     public function index()
     {
+        $user_id = Auth::user()->id;
+        if ($user_id !== 1){
+            return view('internals.oops');
+        }
         $users = User::all();
         return view('internals.viewUserList', compact('users'));
     }

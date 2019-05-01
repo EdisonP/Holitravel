@@ -16,6 +16,10 @@ class HolidayController extends Controller
      */
     public function index()
     {
+        $user_id = Auth::user()->id;
+        if ($user_id !== 1){
+            return view('internals.oops');
+        }
         $holidays = Holidays::all();
         return view('internals.viewHList', compact('holidays'));
     }
@@ -50,9 +54,8 @@ class HolidayController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'holiday_name' => 'required|max:255',
-            'isbn_no' => 'required|alpha_num',
-            'holiday_price' => 'required|numeric',
+            'dateOfFlight' => 'required',
+            'adult' => 'required|num',
         ]);
         $holiday = holiday::create($validatedData);
 
@@ -78,9 +81,9 @@ class HolidayController extends Controller
      */
     public function edit($id)
     {
-        $holidays = Holiday::findOrFail($id);
+        $holidays = Holidays::where('travelID', $id)->firstOrFail();
 
-        return view('edit', compact('holidays'));
+        return view('internals.editH', compact('holidays'));
     }
 
     /**
@@ -93,14 +96,18 @@ class HolidayController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'holiday_name' => 'required|max:255',
-            'holiday_price' => 'required|numeric',
+            'fromDest' => 'required|max:255',
+            'toDest' => 'required|max:255',
+            'dateOfFlight' => 'required|max:255',
+            'adult' => 'required|numeric',
+            'child' => 'required|numeric',
+            'elderly' => 'required|numeric',
+            'status' => 'required|numeric',
         ]);
-        Holiday::whereId($id)->update($validatedData);
+        Holidays::where('travelID', $id)->update($validatedData);
 
-        return redirect('/viewHList')->with('success', 'holiday is successfully updated');
-    }
-
+        return redirect('/viewHList')->with('success', 'Holiday '. $id . ' has successfully updated!');
+        }
     /**
      * Remove the specified resource from storage.
      *
@@ -119,8 +126,8 @@ class HolidayController extends Controller
  
         $Holiday = new Holidays();
  
-        $Holiday->toDest = request('toDest');
         $Holiday->fromDest = request('fromDest');
+        $Holiday->toDest = request('toDest');
         $Holiday->dateOfFlight = request('dateOfFlight');
         $Holiday->adult = request('adult');
         $Holiday->child = request('child');
