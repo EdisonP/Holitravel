@@ -50,10 +50,11 @@ class HolidayController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'dateOfFlight' => 'required',
-            'adult' => 'required|num',
+            'holiday_name' => 'required|max:255',
+            'isbn_no' => 'required|alpha_num',
+            'holiday_price' => 'required|numeric',
         ]);
-        $holiday = Holidays::create($validatedData);
+        $holiday = holiday::create($validatedData);
 
         return redirect('/viewHList')->with('success', 'holiday is successfully saved');
     }
@@ -77,9 +78,9 @@ class HolidayController extends Controller
      */
     public function edit($id)
     {
-        $holidays = Holidays::where('travelID', $id)->firstOrFail();;
+        $holidays = Holiday::findOrFail($id);
 
-        return view('internals.editH', compact('holidays'));
+        return view('edit', compact('holidays'));
     }
 
     /**
@@ -92,17 +93,12 @@ class HolidayController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'fromDest' => 'required|max:255',
-            'toDest' => 'required|max:255',
-            'dateOfFlight' => 'required|max:255',
-            'adult' => 'required|numeric',
-            'child' => 'required|numeric',
-            'elderly' => 'required|numeric',
-            'status' => 'required|numeric',
+            'holiday_name' => 'required|max:255',
+            'holiday_price' => 'required|numeric',
         ]);
-        Holidays::where('travelID', $id)->update($validatedData);
+        Holiday::whereId($id)->update($validatedData);
 
-        return redirect('/viewHList')->with('success', 'Holiday '. $id . ' has successfully updated!');
+        return redirect('/viewHList')->with('success', 'holiday is successfully updated');
     }
 
     /**
@@ -123,9 +119,8 @@ class HolidayController extends Controller
  
         $Holiday = new Holidays();
  
-        
-        $Holiday->fromDest = request('fromDest');
         $Holiday->toDest = request('toDest');
+        $Holiday->fromDest = request('fromDest');
         $Holiday->dateOfFlight = request('dateOfFlight');
         $Holiday->adult = request('adult');
         $Holiday->child = request('child');

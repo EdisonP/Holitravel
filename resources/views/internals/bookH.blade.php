@@ -27,6 +27,15 @@
     ]);
     $destArrays = (json_decode($response->getBody()));
     $destArrays = $destArrays->data;
+    
+    //get array to html drop down list
+
+    /*
+    foreach($destArrays as $dest){
+        echo ($dest->destination) . "\n";
+    }
+    die;
+    */
 ?>
 
 
@@ -41,14 +50,19 @@
                 <div class="form-group row">
                     <label for="name" class="col-md-4 col-form-label text-md-right">Where are you flying from: </label>
                     <div class="col-md-6">
-                    <input id="fromDest" type="text" name="fromDest" required autofocus>
+                        <select class="form-control" name="toDest" id="toDest">
+                            <?php foreach($destArrays as $dest) { 
+                        ?>
+                            <option value="LON">London</option>
+                            <?php } 
+                        ?> </select>
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label for="name" class="col-md-4 col-form-label text-md-right">Current HOT Destinations: </label>
                     <div class="col-md-6">
-                        <select class="form-control" name="toDest" id="toDest">
+                        <select class="form-control" name="fromDest" id="toDest">
                             <?php foreach($destArrays as $dest) { 
                         ?>
                             <option value="<?php echo($dest->destination);?>">
