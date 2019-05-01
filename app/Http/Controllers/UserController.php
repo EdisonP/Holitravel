@@ -43,9 +43,9 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'fName' => 'required|max:255',
-            'lName' => 'required|max:255',
-            'email' => 'required|max:255',
+            'fName' => 'required|max:255|regex:[A-Za-z1-9 ]',
+            'lName' => 'required|max:255|regex:[A-Za-z1-9 ]',
+            'email' => 'required|max:255|regex:[A-Za-z1-9 ]',
         ]);
         $users = User::create($validatedData);
 
@@ -86,9 +86,9 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'fname' => 'required|max:255',
-            'lname' => 'required|max:255',
-            'email' => 'required|max:255',
+            'fname' => 'required|max:255|regex:[A-Za-z1-9 ]',
+            'lname' => 'required|max:255|regex:[A-Za-z1-9 ]',
+            'email' => 'required|max:255|regex:[A-Za-z1-9 ]',
         ]);
         User::whereId($id)->update($validatedData);
 

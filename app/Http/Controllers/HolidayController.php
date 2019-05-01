@@ -54,8 +54,8 @@ class HolidayController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'dateOfFlight' => 'required',
-            'adult' => 'required|num',
+            'dateOfFlight' => 'required|date',
+            'adult' => 'required|numeric',
         ]);
         $holiday = holiday::create($validatedData);
 
@@ -96,8 +96,8 @@ class HolidayController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'fromDest' => 'required|max:255',
-            'toDest' => 'required|max:255',
+            'fromDest' => 'required|max:255|regex:[A-Za-z1-9 ]',
+            'toDest' => 'required|max:255|regex:[A-Za-z1-9 ]',
             'dateOfFlight' => 'required|max:255',
             'adult' => 'required|numeric',
             'child' => 'required|numeric',
